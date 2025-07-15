@@ -4,7 +4,7 @@ namespace App\Http\Requests\Api;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateLokasiRequest extends FormRequest
+class UpdateUserRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,8 +22,9 @@ class UpdateLokasiRequest extends FormRequest
     public function rules(): array
     {
         return [
-            // 'kode_lokasi' => 'required|unique:lokasis,kode_lokasi,' . $this->route('id'),
-            'nama_lokasi' => 'required',
+            'name' => 'required|string|max:100',
+            'email' => 'required|email|unique:users,email,' . $this->route('id'),
+            'password' => 'nullable|string|min:6',
         ];
     }
 }

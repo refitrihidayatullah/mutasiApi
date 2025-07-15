@@ -15,6 +15,6 @@ class Mutasi extends Model
 
     public function produkLokasi()
     {
-        return $this->belongsTo(DB::class, 'produk_lokasi_id'); // gunakan Model ProdukLokasi jika dibuat
+        return $this->belongsTo(ProdukLokasi::class);
     }
 }

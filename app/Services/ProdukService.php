@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Helpers\GenerateCode;
 use App\Models\Produk;
 
 class ProdukService
@@ -12,7 +13,14 @@ class ProdukService
     }
     public function storeProduk($request)
     {
-        return Produk::create($request);
+        $request = (object) $request;
+        $data = [
+            "nama_produk" => $request->nama_produk,
+            "kode_produk" => GenerateCode::generateKodeUnik($request->nama_produk, Produk::class, 'kode_produk'),
+            "kategori" => $request->kategori,
+            "satuan" => $request->satuan
+        ];
+        return Produk::create($data);
     }
     public function updateProduk($id, array $data)
     {

@@ -23,7 +23,7 @@ class UpdateProdukRequest extends FormRequest
     {
         return [
             'nama_produk' => 'required',
-            'kode_produk' => 'required|unique:produks,kode_produk,' . $this->route('id'),
+            // 'kode_produk' => 'required|unique:produks,kode_produk,' . $this->route('id'),
             'kategori' => 'required',
             'satuan' => 'required',
         ];

@@ -22,7 +22,7 @@ class StoreLokasiRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'kode_lokasi' => 'required|unique:lokasis',
+            // 'kode_lokasi' => 'required|unique:lokasis',
             'nama_lokasi' => 'required',
         ];
     }

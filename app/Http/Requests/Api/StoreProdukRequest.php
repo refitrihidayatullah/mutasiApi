@@ -23,7 +23,7 @@ class StoreProdukRequest extends FormRequest
     {
         return [
             'nama_produk' => 'required',
-            'kode_produk' => 'required|unique:produks',
+            // 'kode_produk' => 'required|unique:produks',
             'kategori' => 'required',
             'satuan' => 'required',
         ];

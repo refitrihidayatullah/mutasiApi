@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class Lokasi extends Model
 {
@@ -11,5 +12,11 @@ class Lokasi extends Model
     public function produks()
     {
         return $this->belongsToMany(Produk::class, 'produk_lokasi')->withPivot('stok')->withTimestamps();
+    }
+    protected function namaLokasi(): Attribute
+    {
+        return Attribute::make(
+            set: fn($value) => strtoupper($value)
+        );
     }
 }

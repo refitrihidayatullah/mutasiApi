@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\Lokasi;
+use App\Helpers\GenerateCode;
 
 class LokasiService
 {
@@ -12,7 +13,12 @@ class LokasiService
     }
     public function storeLokasi($request)
     {
-        return Lokasi::create($request);
+        $request = (object) $request;
+        $data = [
+            "nama_lokasi" => $request->nama_lokasi,
+            "kode_lokasi" => GenerateCode::generateKodeUnik($request->nama_lokasi, Lokasi::class, 'kode_lokasi')
+        ];
+        return Lokasi::create($data);
     }
     public function updateLokasi($id, $data)
     {
